@@ -1,0 +1,10 @@
+[Unit]
+Description=child wanted by parent.
+Requires=parent.service
+After=parent.service
+
+[Service]
+ExecStart=/bin/bash -c 'trap "echo exited child wanted by parent" EXIT; echo started child wanted by parent; sleep infinity'
+
+[Install]
+WantedBy=parent.service

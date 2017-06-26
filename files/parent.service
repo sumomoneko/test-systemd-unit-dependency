@@ -1,0 +1,5 @@
+[Unit]
+Description=parent
+
+[Service]
+ExecStart=/bin/bash -c 'trap "echo exited parent" EXIT; echo started parent; sleep infinity'

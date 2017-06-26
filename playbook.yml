@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - copy:
+        src: files/
+        dest: /etc/systemd/system/
+
+    - systemd:
+        name: "{{ item }}"
+        enabled: yes
+        daemon_reload: yes
+      with_items:
+        - parent
+        - child
+        - child-wantedby-parent
